@@ -16,7 +16,7 @@ import time
 import pytz
 from openpyxl import Workbook
 
-from pythonProject.Python應用.backend.測試 import products_type
+from 測試 import products_type
 from 語音驗證碼 import *
 
 app = Flask(__name__)
