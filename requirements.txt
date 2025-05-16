@@ -1,5 +1,11 @@
 flask
 firebase-admin
-flask_cors
+flask-cors
 groq
 playwright
+ddddocr
+pytz
+openpyxl
+sounddevice
+scipy
+speechrecognition
