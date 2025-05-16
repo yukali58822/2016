@@ -2,4 +2,4 @@ flask
 firebase-admin
 flask_cors
 groq
-
+playwright
