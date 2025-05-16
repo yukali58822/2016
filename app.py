@@ -20,18 +20,34 @@ from 測試 import products_type
 
 import json
 
+# 嘗試從環境變數取得憑證
 firebase_credentials_json = os.environ.get('FIREBASE_CREDENTIALS')
-cred_dict = json.loads(firebase_credentials_json)
-cred = credentials.Certificate(cred_dict)
-firebase_admin.initialize_app(cred)
+
+if not firebase_credentials_json:
+    raise RuntimeError("找不到環境變數 'FIREBASE_CREDENTIALS'，請確認已在 Render 設定。")
+
+try:
+    cred_dict = json.loads(firebase_credentials_json)
+    cred = credentials.Certificate(cred_dict)
+    firebase_admin.initialize_app(cred)
+except Exception as e:
+    raise RuntimeError(f"Firebase 初始化失敗：{str(e)}")
 
 
 app = Flask(__name__)
 CORS(app)  # 啟用跨域支援，否則 Flutter Web 會被擋
+try:
+    # 將 JSON 字串解析成 dict
+    cred_dict = json.loads(firebase_credentials_json)
+    # 使用 dict 建立 Firebase 憑證
+    cred = credentials.Certificate(cred_dict)
+    firebase_admin.initialize_app(cred)
+except Exception as e:
+    raise RuntimeError(f"🔥 Firebase 初始化失敗：{str(e)}")
 
-# 初始化 Firebase
-cred = credentials.Certificate('firebase_api.json')
-firebase_admin.initialize_app(cred)
+# # 初始化 Firebase
+# cred = credentials.Certificate('firebase_api.json')
+# firebase_admin.initialize_app(cred)
 taipei = pytz.timezone('Asia/Taipei')
 db = firestore.client()
 
