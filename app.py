@@ -18,6 +18,13 @@ from openpyxl import Workbook
 
 from 測試 import products_type
 
+import json
+
+firebase_credentials_json = os.environ.get('FIREBASE_CREDENTIALS')
+cred_dict = json.loads(firebase_credentials_json)
+cred = credentials.Certificate(cred_dict)
+firebase_admin.initialize_app(cred)
+
 
 app = Flask(__name__)
 CORS(app)  # 啟用跨域支援，否則 Flutter Web 會被擋
