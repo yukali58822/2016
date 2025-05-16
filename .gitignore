@@ -1,0 +1,8 @@
+firebase_api.json
+# 憑證與金鑰
+*.key
+*.pem
+*.p12
+*.crt
+*.jks
+.env
