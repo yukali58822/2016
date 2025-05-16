@@ -17,7 +17,7 @@ import pytz
 from openpyxl import Workbook
 
 from 測試 import products_type
-from 語音驗證碼 import *
+from 語音驗證碼1 import *
 
 app = Flask(__name__)
 CORS(app)  # 啟用跨域支援，否則 Flutter Web 會被擋

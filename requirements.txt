@@ -6,6 +6,4 @@ playwright
 ddddocr
 pytz
 openpyxl
-sounddevice
-scipy
-speechrecognition
+
